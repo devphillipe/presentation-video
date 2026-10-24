@@ -1,12 +1,12 @@
-# Presentation Video — `/brag`
+# Presentation Video
 
 Transforme o código de um site ou aplicativo em um **vídeo curto de lançamento** com o Codex e o [Hyperframes](https://www.npmjs.com/package/hyperframes).
 
-> **Nome do repositório:** `presentation-video` · **Nome da skill no Codex:** `brag` · **Comando:** `/brag` (ou `$brag`, conforme o cliente).
+> **Nome do repositório:** `presentation-video` · **Nome da skill no Codex:** `presentation-video` · **Comando:** `/presentation-video` (ou `$presentation-video`, conforme o cliente).
 
 ## O que a skill faz
 
-A `/brag` é uma *skill de orquestração*: ela lê o projeto local, define uma direção criativa inspirada em apresentações de produto, cria um roteiro e orienta o **Hyperframes**, responsável por implementar, validar e renderizar a composição. **Não** é um motor de vídeo independente nem exige uma URL pública do projeto.
+A `/presentation-video` é uma *skill de orquestração*: ela lê o projeto local, define uma direção criativa inspirada em apresentações de produto, cria um roteiro e orienta o **Hyperframes**, responsável por implementar, validar e renderizar a composição. **Não** é um motor de vídeo independente nem exige uma URL pública do projeto.
 
 - **Inspeção do projeto:** identifica proposta, interface, diferenciais, conteúdo e recursos visuais a partir do código.
 - **Direção criativa e storyboard:** gera critérios visuais, cenas, textos, duração e transições específicos do produto.
@@ -30,17 +30,17 @@ O objetivo automático é um vídeo de **15–25 segundos**, mas `--duration` pe
 ### Windows (PowerShell)
 
 ```powershell
-# Clone com o nome correto da skill (brag)
-git clone https://github.com/devphillipe/presentation-video.git "$env:USERPROFILE\.codex\skills\brag"
+# Clone com o nome correto da skill (presentation-video)
+git clone https://github.com/devphillipe/presentation-video.git "$env:USERPROFILE\.codex\skills\presentation-video"
 ```
 
 ### macOS / Linux
 
 ```bash
-git clone https://github.com/devphillipe/presentation-video.git "${CODEX_HOME:-$HOME/.codex}/skills/brag"
+git clone https://github.com/devphillipe/presentation-video.git "${CODEX_HOME:-$HOME/.codex}/skills/presentation-video"
 ```
 
-Se você já baixou este projeto como `presentation-video`, **copie ou renomeie a pasta para `brag`** dentro de `skills/`: o `SKILL.md` declara `name: brag` e as referências de áudio utilizam esse caminho. Reinicie ou recarregue o Codex conforme necessário.
+O diretório instalado deve se chamar `presentation-video` dentro de `skills/`, em conformidade com `name: presentation-video` no `SKILL.md`. Reinicie ou recarregue o Codex conforme necessário.
 
 Verifique também se o Hyperframes está disponível no ambiente e se suas instruções podem ser lidas pelo agente. A execução efetiva dependerá dessa integração.
 
@@ -49,11 +49,11 @@ Verifique também se o Hyperframes está disponível no ambiente e se suas instr
 Abra no Codex o diretório do site ou aplicativo que será apresentado e solicite:
 
 ```text
-/brag
-/brag --tone polished --format vertical
-/brag --tone cinematic --duration 30 --title "Meu Aplicativo"
-/brag --tone chaotic --no-music --no-sfx
-/brag this. Make it feel like a ridiculous startup launch.
+/presentation-video
+/presentation-video --tone polished --format vertical
+/presentation-video --tone cinematic --duration 30 --title "Meu Aplicativo"
+/presentation-video --tone chaotic --no-music --no-sfx
+/presentation-video this. Make it feel like a ridiculous startup launch.
 ```
 
 | Opção | Valores / efeito | Padrão |
@@ -71,21 +71,21 @@ O agente deve respeitar a identidade do projeto, a legibilidade do texto, as ins
 
 1. **Inspecionar:** leitura do código e coleta das características do produto.
 2. **Definir direção:** critérios visuais documentados em `apple-inspired-direction.md`.
-3. **Planejar:** conceito e storyboard em `brag-plan.md`.
+3. **Planejar:** conceito e storyboard em `video-plan.md`.
 4. **Compor:** `composition-brief.md` encaminhado ao Hyperframes e implementação em `composition/`.
-5. **Validar e renderizar:** lint, pré-visualização, geração do MP4 e revisão em `brag-qa.md`.
-6. **Entregar:** vídeo `brag.mp4` e sugestão de divulgação `share-copy.txt`.
+5. **Validar e renderizar:** lint, pré-visualização, geração do MP4 e revisão em `video-qa.md`.
+6. **Entregar:** vídeo `presentation-video.mp4` e sugestão de divulgação `share-copy.txt`.
 
-Os resultados normalmente ficam na pasta `brag-output/` do projeto, ou em `brag-output-AAAA-MM-DD-HHMMSS/` para evitar sobrescrever execuções anteriores.
+Os resultados normalmente ficam na pasta `presentation-video-output/` do projeto, ou em `presentation-video-output-AAAA-MM-DD-HHMMSS/` para evitar sobrescrever execuções anteriores.
 
 ```text
-brag-output/
+presentation-video-output/
 ├── apple-inspired-direction.md
-├── brag-plan.md
+├── video-plan.md
 ├── composition-brief.md
 ├── composition/
-├── brag.mp4
-├── brag-qa.md
+├── presentation-video.mp4
+├── video-qa.md
 └── share-copy.txt
 ```
 
@@ -95,7 +95,7 @@ brag-output/
 
 ```text
 presentation-video/
-├── SKILL.md                  # Instruções principais da /brag
+├── SKILL.md                  # Instruções principais da /presentation-video
 ├── agents/openai.yaml         # Metadados de exibição da skill
 ├── references/                # Inspeção, direção, planejamento, áudio e QA
 ├── scripts/                   # Análise opcional de cues musicais (Python)

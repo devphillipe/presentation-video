@@ -1,19 +1,19 @@
 ---
-name: brag
-description: Turn the current project website or app into a short, polished, shareable launch video using Hyperframes. Use when someone says "/brag", "use $brag", "let's brag about this", "make a launch video", "turn this into a video", or wants to share what they built. Reads the project code directly, no live URL or screenshots needed.
+name: presentation-video
+description: Turn the current project website or app into a short, polished, shareable launch video using Hyperframes. Use when someone says "/presentation-video", "use $presentation-video", "make a product showcase", "make a launch video", "turn this into a video", or wants to share what they built. Reads the project code directly, no live URL or screenshots needed.
 ---
 
-# /brag
+# Presentation Video
 
-You built it. Now let's brag about it.
+Turn what you've built into a launch video.
 
-`/brag` turns the current project website or app into a short, polished, shareable launch video using Hyperframes. It is narrow, opinionated, and fun.
+`/presentation-video` turns the current project website or app into a short, polished, shareable launch video using Hyperframes. It is narrow, opinionated, and fun.
 
 ## What this skill does
 
 1. Reads the current project code to understand the app.
 2. Defines a project-specific Apple-inspired creative direction.
-3. Plans the concept and storyboard, then writes `brag-plan.md`.
+3. Plans the concept and storyboard, then writes `video-plan.md`.
 4. Writes `composition-brief.md` and hands it to Hyperframes.
 5. Validates, previews, and renders the video.
 6. Reviews the final video against the creative direction and writes share copy.
@@ -23,10 +23,10 @@ You built it. Now let's brag about it.
 The user may invoke with natural language or flags:
 
 ```
-/brag
-/brag --tone chaotic
-/brag --tone polished --format vertical
-/brag this. Make it feel like a ridiculous startup launch.
+/presentation-video
+/presentation-video --tone chaotic
+/presentation-video --tone polished --format vertical
+/presentation-video this. Make it feel like a ridiculous startup launch.
 ```
 
 Parse these options:
@@ -50,15 +50,15 @@ Apple-inspired direction is the default visual/motion layer, not an eighth tone 
 
 ## Output directory
 
-By default, output goes to `brag-output/`. To avoid overwriting previous runs, use a timestamped directory:
+By default, output goes to `presentation-video-output/`. To avoid overwriting previous runs, use a timestamped directory:
 
 ```
-brag-output-2026-05-04-143022/
+presentation-video-output-2026-05-04-143022/
 ```
 
 Use a timestamp when:
 - The user explicitly asks for a new run without overriding previous results
-- A `brag-output/` directory already exists in the project
+- A `presentation-video-output/` directory already exists in the project
 
 Generate the timestamp at the start of the run (`YYYY-MM-DD-HHmmss`) and use it consistently for all output paths in that run: direction, plan, brief, composition, render, QA, and share copy.
 
@@ -68,9 +68,9 @@ Generate the timestamp at the start of the run (`YYYY-MM-DD-HHmmss`) and use it 
 
 **Read:** [references/step-1-inspect.md](references/step-1-inspect.md)
 
-Scan the project directory and extract the information needed to plan the brag video.
+Scan the project directory and extract the information needed to plan the product video.
 
-**Gate:** You can answer all 9 questions in the brag planning rubric.
+**Gate:** You can answer all 9 questions in the video planning rubric.
 
 ---
 
@@ -88,11 +88,11 @@ After inspection and before planning/storyboarding, write `<output-dir>/apple-in
 
 **Read:** [references/step-2-plan.md](references/step-2-plan.md)
 
-Write `<output-dir>/brag-plan.md` (where `<output-dir>` is `brag-output/` or the timestamped variant chosen above). Answer the planning rubric. Use the completed creative direction to plan the concept and storyboard before writing the plan. Include its criteria IDs and scene mappings. Commit to a creative angle. Write the beat-by-beat storyboard including scenes, text, timing, transitions, and SFX cues.
+Write `<output-dir>/video-plan.md` (where `<output-dir>` is `presentation-video-output/` or the timestamped variant chosen above). Answer the planning rubric. Use the completed creative direction to plan the concept and storyboard before writing the plan. Include its criteria IDs and scene mappings. Commit to a creative angle. Write the beat-by-beat storyboard including scenes, text, timing, transitions, and SFX cues.
 
 When music is selected, include a compact `Music cue guidance` section: read the bundled track's cue preset from `assets/music/cues/` if present, otherwise note cues will be detected at composition time (any track now supports beat sync — see `references/audio.md`). Cue metadata is optional timing guidance only: story, readability, pacing, and product clarity stay primary.
 
-**Gate:** `<output-dir>/brag-plan.md` exists with a full storyboard. Scene durations sum to the requested duration, or 15–25 seconds when automatic.
+**Gate:** `<output-dir>/video-plan.md` exists with a full storyboard. Scene durations sum to the requested duration, or 15–25 seconds when automatic.
 
 ---
 
@@ -104,7 +104,7 @@ When music is selected, include a compact `Music cue guidance` section: read the
 
 Write `<output-dir>/composition-brief.md`, carrying forward the direction, acceptance criteria, and storyboard, and use Hyperframes to create the video implementation in `<output-dir>/composition/`.
 
-`/brag` owns the product angle, source material, storyboard, tone, format, audio selection, music cue guidance, creative acceptance criteria, and delivery expectations. Hyperframes owns the concrete composition structure, exact animation timing, animation mechanics, runtime choices, linting rules, and render workflow.
+`/presentation-video` owns the product angle, source material, storyboard, tone, format, audio selection, music cue guidance, creative acceptance criteria, and delivery expectations. Hyperframes owns the concrete composition structure, exact animation timing, animation mechanics, runtime choices, linting rules, and render workflow.
 
 **Gate:** `npx hyperframes lint` passes with zero errors inside `<output-dir>/composition/`.
 
@@ -114,15 +114,15 @@ Write `<output-dir>/composition-brief.md`, carrying forward the direction, accep
 
 **Read:** [references/step-4-deliver.md](references/step-4-deliver.md)
 
-Validate, preview, and render to `<output-dir>/brag.mp4`. Then read [references/apple-inspired-qa.md](references/apple-inspired-qa.md), inspect the actual MP4 against the direction, and write `<output-dir>/brag-qa.md` before final delivery. Write `<output-dir>/share-copy.txt`.
+Validate, preview, and render to `<output-dir>/presentation-video.mp4`. Then read [references/apple-inspired-qa.md](references/apple-inspired-qa.md), inspect the actual MP4 against the direction, and write `<output-dir>/video-qa.md` before final delivery. Write `<output-dir>/share-copy.txt`.
 
-**Gate:** `<output-dir>/brag.mp4` exists, final-render QA passes against the agreed direction, and share copy is written. If review cannot be completed or a blocker remains, report the result as needing review with the precise limitation; do not claim a QA pass.
+**Gate:** `<output-dir>/presentation-video.mp4` exists, final-render QA passes against the agreed direction, and share copy is written. If review cannot be completed or a blocker remains, report the result as needing review with the precise limitation; do not claim a QA pass.
 
 ---
 
 ## Tone system
 
-Seven tone presets ship with `/brag`. Each changes scripting energy, pacing, typography personality, and transition style. Presets are defaults, not limits.
+Seven tone presets ship with `/presentation-video`. Each changes scripting energy, pacing, typography personality, and transition style. Presets are defaults, not limits.
 
 Full definitions: [references/tones.md](references/tones.md)
 
@@ -142,7 +142,7 @@ Always allow a freeform creative direction to refine or override the preset.
 
 ## Creative laws
 
-These apply to every brag video regardless of tone.
+These apply to every product video regardless of tone.
 
 **Short.** 15–25 seconds. Not one second more without a reason.
 

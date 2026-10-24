@@ -27,48 +27,48 @@ Suggested plan notation:
 Audio-reactive treatment: subtle; use music RMS/bass to make the hero glow and product card presence breathe. No waveform/equalizer visuals.
 ```
 
-Hyperframes implementation note: follow the current hyperframes audio-reactive workflow (its `references/audio-reactive.md`) to extract per-frame audio data and sample it synchronously inside the composition timeline. The extraction helper ships with the Hyperframes/GSAP skills — `/brag` does not provide it, so don't hardcode a path to it.
+Hyperframes implementation note: follow the current hyperframes audio-reactive workflow (its `references/audio-reactive.md`) to extract per-frame audio data and sample it synchronously inside the composition timeline. The extraction helper ships with the Hyperframes/GSAP skills — `/presentation-video` does not provide it, so don't hardcode a path to it.
 
 ---
 
 ## Asset paths
 
-SFX live under `sfx/{casino,impact,interface,ui}/`, and the individual keypress set under `sfx/keyboard/`. The assets root is `${CODEX_HOME:-$HOME/.codex}/skills/brag/assets/` in the installed Codex skill and `skills/brag/assets/` in this repo copy.
+SFX live under `sfx/{casino,impact,interface,ui}/`, and the individual keypress set under `sfx/keyboard/`. The assets root is `${CODEX_HOME:-$HOME/.codex}/skills/presentation-video/assets/` in the installed Codex skill and `skills/presentation-video/assets/` in this repo copy.
 
-Music lives in the installed skill at `${CODEX_HOME:-$HOME/.codex}/skills/brag/assets/music/`. In this repo copy, it lives at `skills/brag/assets/music/`.
+Music lives in the installed skill at `${CODEX_HOME:-$HOME/.codex}/skills/presentation-video/assets/music/`. In this repo copy, it lives at `skills/presentation-video/assets/music/`.
 
 Bundled music cue presets live beside the music:
 
 ```text
-skills/brag/assets/music/cues/<track-stem>.music-cues.md
-skills/brag/assets/music/cues/<track-stem>.music-cues.json
-${CODEX_HOME:-$HOME/.codex}/skills/brag/assets/music/cues/<track-stem>.music-cues.md
-${CODEX_HOME:-$HOME/.codex}/skills/brag/assets/music/cues/<track-stem>.music-cues.json
+skills/presentation-video/assets/music/cues/<track-stem>.music-cues.md
+skills/presentation-video/assets/music/cues/<track-stem>.music-cues.json
+${CODEX_HOME:-$HOME/.codex}/skills/presentation-video/assets/music/cues/<track-stem>.music-cues.md
+${CODEX_HOME:-$HOME/.codex}/skills/presentation-video/assets/music/cues/<track-stem>.music-cues.json
 ```
 
 SFX analysis lives beside the SFX library:
 
 ```text
-skills/brag/assets/sfx/sfx-analysis.md
-skills/brag/assets/sfx/sfx-analysis.json
-${CODEX_HOME:-$HOME/.codex}/skills/brag/assets/sfx/sfx-analysis.md
-${CODEX_HOME:-$HOME/.codex}/skills/brag/assets/sfx/sfx-analysis.json
+skills/presentation-video/assets/sfx/sfx-analysis.md
+skills/presentation-video/assets/sfx/sfx-analysis.json
+${CODEX_HOME:-$HOME/.codex}/skills/presentation-video/assets/sfx/sfx-analysis.md
+${CODEX_HOME:-$HOME/.codex}/skills/presentation-video/assets/sfx/sfx-analysis.json
 ```
 
-**Critical: copy audio files into the composition project before rendering.** Hyperframes validates and serves assets from the composition directory. Always copy the files you need into `brag-output/composition/assets/` first:
+**Critical: copy audio files into the composition project before rendering.** Hyperframes validates and serves assets from the composition directory. Always copy the files you need into `presentation-video-output/composition/assets/` first:
 
 ```bash
 # Create local asset dirs
-mkdir -p brag-output/composition/assets/sfx/interface brag-output/composition/assets/sfx/impact brag-output/composition/assets/sfx/casino brag-output/composition/assets/sfx/ui
-mkdir -p brag-output/composition/assets/music
+mkdir -p presentation-video-output/composition/assets/sfx/interface presentation-video-output/composition/assets/sfx/impact presentation-video-output/composition/assets/sfx/casino presentation-video-output/composition/assets/sfx/ui
+mkdir -p presentation-video-output/composition/assets/music
 
 # Copy only the files you plan to use (not the entire library)
 # From the repo copy:
-cp skills/brag/assets/sfx/interface/bong_001.ogg brag-output/composition/assets/sfx/interface/
-cp skills/brag/assets/sfx/impact/impactBell_heavy_000.ogg brag-output/composition/assets/sfx/impact/
-cp skills/brag/assets/music/happy-beats-business-moves-vol-1-by-ende-dot-app.mp3 brag-output/composition/assets/music/
+cp skills/presentation-video/assets/sfx/interface/bong_001.ogg presentation-video-output/composition/assets/sfx/interface/
+cp skills/presentation-video/assets/sfx/impact/impactBell_heavy_000.ogg presentation-video-output/composition/assets/sfx/impact/
+cp skills/presentation-video/assets/music/happy-beats-business-moves-vol-1-by-ende-dot-app.mp3 presentation-video-output/composition/assets/music/
 
-# From an installed Codex skill, use ${CODEX_HOME:-$HOME/.codex}/skills/brag/assets/... instead.
+# From an installed Codex skill, use ${CODEX_HOME:-$HOME/.codex}/skills/presentation-video/assets/... instead.
 ```
 
 Then in the composition HTML, paths are **relative to the `composition/` directory**:
@@ -256,11 +256,11 @@ assets/music/cues/<track-stem>.music-cues.md
 assets/music/cues/<track-stem>.music-cues.json
 ```
 
-2. **Any track → extended analysis (richest for custom tracks; needs Python, any Hyperframes version).** For a custom track — or to refresh a bundled one — run `analyze_music_cues.py` on the audio file. It produces the same rich cue JSON/Markdown for any track. Run it via `uv`, which auto-provisions the deps (`librosa`, `numpy`, `scipy`, `soundfile`) from `skills/brag/scripts/pyproject.toml` — no manual `pip install` needed:
+2. **Any track → extended analysis (richest for custom tracks; needs Python, any Hyperframes version).** For a custom track — or to refresh a bundled one — run `analyze_music_cues.py` on the audio file. It produces the same rich cue JSON/Markdown for any track. Run it via `uv`, which auto-provisions the deps (`librosa`, `numpy`, `scipy`, `soundfile`) from `skills/presentation-video/scripts/pyproject.toml` — no manual `pip install` needed:
 
 ```bash
-uv run --project skills/brag/scripts \
-  python skills/brag/scripts/analyze_music_cues.py <track>.mp3 \
+uv run --project skills/presentation-video/scripts \
+  python skills/presentation-video/scripts/analyze_music_cues.py <track>.mp3 \
   --output-json <output-dir>/composition/assets/music/cues/<stem>.music-cues.json \
   --output-md  <output-dir>/composition/assets/music/cues/<stem>.music-cues.md
 ```
@@ -309,4 +309,4 @@ Put the music bed on a low track and give each overlapping SFX its own ascending
 <audio id="sfx-1" data-start="0.2" data-duration="1" data-track-index="11" data-volume="0.80" src="assets/sfx/interface/drop_001.ogg"></audio>
 ```
 
-Wire each `<audio>` clip per the current hyperframes Data Attributes + Video/Audio contract (`data-track-index`, `data-volume`, `data-start`, `data-duration`). `/brag` owns only the volume policy above and the track-allocation convention; Hyperframes owns the clip schema.
+Wire each `<audio>` clip per the current hyperframes Data Attributes + Video/Audio contract (`data-track-index`, `data-volume`, `data-start`, `data-duration`). `/presentation-video` owns only the volume policy above and the track-allocation convention; Hyperframes owns the clip schema.

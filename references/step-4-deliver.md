@@ -1,17 +1,17 @@
 # Step 4: Validate, render, and deliver
 
-Use the output directory selected in `SKILL.md` for all paths; `brag-output/` below is the default example. Follow the installed Hyperframes instructions and supported CLI commands for validation; retain the checks below where supported. If the current CLI replaces `validate`/`inspect` with `check`, use its corresponding runtime, contrast, layout, and motion audits. Do not upgrade a working installation just to run a legacy command.
+Use the output directory selected in `SKILL.md` for all paths; `presentation-video-output/` below is the default example. Follow the installed Hyperframes instructions and supported CLI commands for validation; retain the checks below where supported. If the current CLI replaces `validate`/`inspect` with `check`, use its corresponding runtime, contrast, layout, and motion audits. Do not upgrade a working installation just to run a legacy command.
 
 ## Validate
 
 ```bash
-cd brag-output/composition
+cd presentation-video-output/composition
 npx hyperframes lint       # static checks: track overlaps, unregistered timelines, missing ids
 npx hyperframes validate   # loads in headless Chrome: WCAG contrast audit + console errors
 npx hyperframes inspect    # text / container overflow across the timeline
 ```
 
-Fix all errors. The contrast warnings come from `validate` (`lint` is static-only): fix anything below 3:1 for large text or 4.5:1 for body text. Accept borderline cases (3:1–4:1) — brag videos are not accessibility documents, but text must be legible. `inspect` backstops the "keep all text readable" creative law — fix any reported overflow.
+Fix all errors. The contrast warnings come from `validate` (`lint` is static-only): fix anything below 3:1 for large text or 4.5:1 for body text. Accept borderline cases (3:1–4:1) — product videos are not accessibility documents, but text must be legible. `inspect` backstops the "keep all text readable" creative law — fix any reported overflow.
 
 For a visual gut-check before rendering, optionally capture key frames:
 
@@ -32,43 +32,43 @@ If the user approves or asks to render:
 ## Render
 
 ```bash
-npx hyperframes render --output ../brag.mp4
+npx hyperframes render --output ../presentation-video.mp4
 ```
 
-This outputs to `brag-output/brag.mp4` (one level up from the composition directory).
+This outputs to `presentation-video-output/presentation-video.mp4` (one level up from the composition directory).
 
 For a faster iteration render:
 ```bash
-npx hyperframes render --quality draft --output ../brag.mp4
+npx hyperframes render --quality draft --output ../presentation-video.mp4
 ```
 
 For final delivery:
 ```bash
-npx hyperframes render --quality high --output ../brag.mp4
+npx hyperframes render --quality high --output ../presentation-video.mp4
 ```
 
 ## Final-render QA against the creative direction
 
 **Read:** [apple-inspired-qa.md](apple-inspired-qa.md).
 
-After the final render, inspect `<output-dir>/brag.mp4`, compare it with `apple-inspired-direction.md`, `brag-plan.md`, and `composition-brief.md`, and write `<output-dir>/brag-qa.md`. Preview/snapshot checks alone do not establish a final-video pass. Fix material deviations, rerender, and review the changed result before final delivery. Record unverified items explicitly.
+After the final render, inspect `<output-dir>/presentation-video.mp4`, compare it with `apple-inspired-direction.md`, `video-plan.md`, and `composition-brief.md`, and write `<output-dir>/video-qa.md`. Preview/snapshot checks alone do not establish a final-video pass. Fix material deviations, rerender, and review the changed result before final delivery. Record unverified items explicitly.
 
 ## Write share copy
 
-Write `brag-output/share-copy.txt`.
+Write `presentation-video-output/share-copy.txt`.
 
 The share copy should be:
 - One to three sentences max
 - Postable as-is to Twitter/X, LinkedIn, or Discord
 - Specific to the project — no generic "excited to share" language
-- Tone-matched to the brag video
+- Tone-matched to the product video
 
 `share-copy.txt` is the canonical single caption. Do not put multi-platform variants, long launch notes, or Product Hunt copy in this file.
 
 If variants are useful, write them to a separate optional file:
 
 ```text
-brag-output/share-copy-variants.md
+presentation-video-output/share-copy-variants.md
 ```
 
 ### Share copy by tone
@@ -126,15 +126,15 @@ Available in 12 metros.
 
 ## Final output structure
 
-After this step, `brag-output/` should contain:
+After this step, `presentation-video-output/` should contain:
 
 ```
-brag-output/
-  brag.mp4                — the rendered video
+presentation-video-output/
+  presentation-video.mp4                — the rendered video
   apple-inspired-direction.md — the agreed creative direction and criteria
-  brag-plan.md            — the plan and storyboard
+  video-plan.md            — the plan and storyboard
   composition-brief.md    — the Hyperframes handoff brief
-  brag-qa.md              — final-render evidence and review outcome
+  video-qa.md              — final-render evidence and review outcome
   share-copy.txt          — the share caption
   composition/            — the Hyperframes project
     index.html
@@ -145,7 +145,7 @@ brag-output/
 ## Telling the user
 
 After everything is done, tell the user:
-- Where the video is (`brag-output/brag.mp4`)
+- Where the video is (`presentation-video-output/presentation-video.mp4`)
 - Where the share copy is
 - Where the direction and QA report are, including the review result and any unverified items
 - One sentence on what the video does creatively

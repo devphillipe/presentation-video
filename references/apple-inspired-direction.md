@@ -8,7 +8,7 @@ Reference: [Design Apple-style UI](https://aiuxplayground.com/prompts/design-app
 
 The source emphasizes immediate feedback, direct manipulation, interruptible motion with velocity continuity, restrained spring settling, consistent spatial relationships, purposeful materials, and reduced-motion alternatives. For a recorded demonstration, express these as visible cause and effect, coherent trajectories, and controlled arrivals. Live gesture mechanics require a separate interactive implementation and cannot be verified from a film.
 
-Everything below is a Brag filmmaking adaptation. Do not redesign the source application as part of a video task or invent capabilities. Keep source UI, logo, copy, palette, and font identity recognizable. Prefer quiet presentation and clear product staging by default; explicit user directions override that preference. All seven tone presets, flags, audio options, cue analysis, optional voiceover, share copy, and Hyperframes workflows remain available.
+Everything below is a product-film adaptation. Do not redesign the source application as part of a video task or invent capabilities. Keep source UI, logo, copy, palette, and font identity recognizable. Prefer quiet presentation and clear product staging by default; explicit user directions override that preference. All seven tone presets, flags, audio options, cue analysis, optional voiceover, share copy, and Hyperframes workflows remain available.
 
 ## Establish the direction
 
@@ -22,7 +22,7 @@ Specify these decisions concretely:
 - **Surface treatment:** decide where solid framing, subtle shadow, or translucency helps separate product layers. Record usable contrast and the backdrop. Glass is optional; avoid applying a generic glass skin to the product.
 - **Motion arc:** choose the key reveal, a working-app action if available, and the landing/outro. For each, state what moves, its visual origin and destination, whether it overshoots, when it settles, and how long the readable content holds. No selector-level implementation belongs here.
 - **Transition logic:** describe what persists across adjacent shots and how the viewer follows it. Use reframing or matched position when useful; allow a deliberate cut when the selected tone needs it.
-- **Audio arc:** keep the existing Brag audio selection workflow. Identify visible actions that merit sound and how the bed supports the reveal. Honor disabled audio and deliberate silence.
+- **Audio arc:** keep the existing video audio selection workflow. Identify visible actions that merit sound and how the bed supports the reveal. Honor disabled audio and deliberate silence.
 - **Motion restraint:** record a lower-motion treatment for high-travel or busy moments. This is a fallback design note, not an extra render requirement. If the user requests a reduced-motion film, make it the primary treatment and carry that choice through all artifacts.
 
 Do not equate Apple-inspired with a white palette, Apple logos, San Francisco font downloads, device mockups, or copied launch copy. The product remains the subject.
@@ -34,7 +34,7 @@ Before storyboarding, assign stable IDs to a compact set of criteria, with proje
 | ID | Category | Make the expected result specific |
 |---|---|---|
 | D1 | Product truth and identity | Name the exact UI/copy to show and brand details that must remain recognizable. |
-| D2 | Message hierarchy and reading | Identify required lines, focal elements, and settled reading holds using Brag's existing floors. |
+| D2 | Message hierarchy and reading | Identify required lines, focal elements, and settled reading holds using the skill's existing floors. |
 | D3 | Purposeful movement | Describe the key trajectory and intended landing; list any deliberately energetic exceptions. |
 | D4 | Shot continuity | Identify the anchor carried through a transition, or explain the intended cut. |
 | D5 | Layer separation | Name the layers and how the focal content stays distinct and legible. |

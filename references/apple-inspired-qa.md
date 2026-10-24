@@ -1,6 +1,6 @@
 # Final-video QA against the agreed direction
 
-Read after rendering and before final delivery. Compare the actual `<output-dir>/brag.mp4` with the direction, plan, and composition brief; write `<output-dir>/brag-qa.md`.
+Read after rendering and before final delivery. Compare the actual `<output-dir>/presentation-video.mp4` with the direction, plan, and composition brief; write `<output-dir>/video-qa.md`.
 
 ## Review evidence
 

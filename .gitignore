@@ -1,6 +1,6 @@
 # Vídeos gerados e builds locais
-brag-output/
-brag-output-*/
+presentation-video-output/
+presentation-video-output-*/
 node_modules/
 dist/
 build/

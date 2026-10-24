@@ -2,17 +2,17 @@
 
 ## Create the composition brief
 
-Write `<output-dir>/composition-brief.md` before creating or editing the Hyperframes composition. Read the completed direction and plan, and carry their acceptance criteria and scene mappings into the brief. Replace every `brag-output/` example below with the output directory selected in `SKILL.md`.
+Write `<output-dir>/composition-brief.md` before creating or editing the Hyperframes composition. Read the completed direction and plan, and carry their acceptance criteria and scene mappings into the brief. Replace every `presentation-video-output/` example below with the output directory selected in `SKILL.md`.
 
 ```markdown
 # Hyperframes Composition Brief: [App Name]
 
 ## Objective
-Create a short launch-style brag video for [App Name].
+Create a short launch-style product video for [App Name].
 
 ## Output
-- Composition directory: `brag-output/composition/`
-- Rendered video: `brag-output/brag.mp4`
+- Composition directory: `presentation-video-output/composition/`
+- Rendered video: `presentation-video-output/presentation-video.mp4`
 - Format: [landscape / vertical / square] — [width]x[height]
 - Duration: [explicit requested seconds, or automatic 15-25 seconds]
 
@@ -30,7 +30,7 @@ Create a short launch-style brag video for [App Name].
 - Tone preset: [default / polished / yc-parody / chaotic / deadpan / cinematic / app-store]
 - Creative direction: [freeform phrase, inferred or user-provided]
 - Interpretation: [how tone affects pacing, writing, visual energy, and restraint]
-- Angle: [one paragraph from brag-plan.md]
+- Angle: [one paragraph from video-plan.md]
 - Hook: [first 2-3 seconds]
 - Outro / punchline: [final line]
 - Avoid:
@@ -43,7 +43,7 @@ Create a short launch-style brag video for [App Name].
 - Agreed visual/motion choices: [project-specific summary]
 - Criteria: [copy each applicable ID, expected result, and scene mapping]
 - User-requested exceptions: [carry forward verbatim, or none]
-- Final review: inspect the rendered MP4 against these criteria; write `<output-dir>/brag-qa.md` using the final QA reference.
+- Final review: inspect the rendered MP4 against these criteria; write `<output-dir>/video-qa.md` using the final QA reference.
 - Scope: simulated interactions are authored video events; they do not establish live interruptibility, gesture support, or accessibility compliance.
 
 ## Visual Identity
@@ -55,7 +55,7 @@ Create a short launch-style brag video for [App Name].
 - Visual references from the project: [short list]
 
 ## Storyboard
-Use the storyboard in `brag-output/brag-plan.md` as the creative contract.
+Use the storyboard in `presentation-video-output/video-plan.md` as the creative contract.
 
 Scene summary:
 1. [Scene name] — [duration]s — [what must be seen / read]
@@ -75,17 +75,17 @@ Scene summary:
 - SFX selection guidance: [how sound should match motion and interaction; examples only, not rigid rules]
 - SFX analysis guidance: [path to sfx-analysis.md/json if present; use lower high-frequency-risk sounds for repeated or polished moments]
 - Exact SFX choice: Hyperframes should choose filenames, timestamps, density, and volume based on the implemented animation.
-- Audio files: copy the chosen music and any Hyperframes-selected SFX into `brag-output/composition/assets/`
+- Audio files: copy the chosen music and any Hyperframes-selected SFX into `presentation-video-output/composition/assets/`
 
 ## Hyperframes Instructions
-Use the current Hyperframes skill/instructions when available, plus the Hyperframes CLI workflow. Prefer native Hyperframes conventions over anything in `/brag`.
+Use the current Hyperframes skill/instructions when available, plus the Hyperframes CLI workflow. Prefer native Hyperframes conventions over anything in `/presentation-video`.
 
 Requirements:
 - Show at least one real UI, copy, or visual element from the source project.
 - Keep all text readable in the final render.
 - Match the requested duration, or keep the automatic duration within 15-25 seconds.
 - Include the planned music/SFX layer unless audio was explicitly disabled or documented as intentionally silent.
-- Treat `/brag` audio notes as guidance, not a fixed cue sheet. Choose SFX after the visual animation exists.
+- Treat `/presentation-video` audio notes as guidance, not a fixed cue sheet. Choose SFX after the visual animation exists.
 - Treat music cue metadata as optional timing hints. Hyperframes decides exact animation timing and should ignore cues that hurt readability, scene pacing, or the product story.
 - Major reveals may move toward nearby strong cues within about 0.15s. Smaller entrances may align to nearby beat points within about 0.10s. Use only 1-3 strong cue locks in a 15-25s video unless the edit clearly benefits from more.
 - Use SFX to support motion and interaction: card sounds for card-like reveals, short announcement cues for major payoffs, key/click sounds for text or user actions, and restraint when the edit is already busy.
@@ -97,7 +97,7 @@ Requirements:
 - Run Hyperframes lint and validate before render.
 ```
 
-The brief is the boundary: if a detail belongs to product positioning, copy, tone, source material, or selection of moments, `/brag` should specify it. If a detail belongs to composition implementation, Hyperframes should decide it.
+The brief is the boundary: if a detail belongs to product positioning, copy, tone, source material, or selection of moments, `/presentation-video` should specify it. If a detail belongs to composition implementation, Hyperframes should decide it.
 
 ---
 
@@ -110,7 +110,7 @@ mkdir -p <output-dir>/composition/assets/music
 cp <skill-assets>/music/<track>.mp3 <output-dir>/composition/assets/music/
 ```
 
-When running from an installed Codex skill, `<skill-assets>` is `${CODEX_HOME:-$HOME/.codex}/skills/brag/assets/`. From the repo, it is `skills/brag/assets/`.
+When running from an installed Codex skill, `<skill-assets>` is `${CODEX_HOME:-$HOME/.codex}/skills/presentation-video/assets/`. From the repo, it is `skills/presentation-video/assets/`.
 
 Hyperframes copies any SFX it selects into the same `assets/` tree after choosing exact files.
 
@@ -118,7 +118,7 @@ Hyperframes copies any SFX it selects into the same `assets/` tree after choosin
 
 ## Voiceover (only when the user explicitly asks)
 
-Voiceover is off by default and is not offered to the user. Only add narration when the user explicitly requests it ("add a voiceover", "narrate this", etc.). In that case, write the narration lines into `brag-plan.md` under a `## Voiceover script` section, then generate the audio:
+Voiceover is off by default and is not offered to the user. Only add narration when the user explicitly requests it ("add a voiceover", "narrate this", etc.). In that case, write the narration lines into `video-plan.md` under a `## Voiceover script` section, then generate the audio:
 
 ```bash
 npx hyperframes tts "<narration text or path to script>" \
@@ -140,7 +140,7 @@ Scene durations must flex to match the generated audio — check the WAV duratio
 
 ## Audio-reactive extraction (when music is present)
 
-When music is present and the treatment is not `none`, the composition can react to per-frame audio data. **Delegate the extraction to the Hyperframes audio-reactive workflow** — `/brag` does not ship an extraction script and must not hardcode a path to one.
+When music is present and the treatment is not `none`, the composition can react to per-frame audio data. **Delegate the extraction to the Hyperframes audio-reactive workflow** — `/presentation-video` does not ship an extraction script and must not hardcode a path to one.
 
 In the composition step, follow `references/audio-reactive.md` from the current Hyperframes instructions when available. Hyperframes owns the data format, the extraction helper, and the per-frame sampling pattern. Ask Hyperframes to extract the audio data and wire at least one visual element to it.
 
@@ -175,19 +175,19 @@ This gives you two layers of musicality: the big moments land on the strongest h
 
 Do not force every tween onto a beat — readability and scene pacing come first. If snapping a tween to a beat hurts copy legibility or the product story, use the natural timing instead.
 
-If SFX are enabled, also pass `skills/brag/assets/sfx/sfx-analysis.md` as selection guidance. Prefer low high-frequency-risk files for repeated or polished moments. SFX on sequential events should fire at the same timestamp as the visual — the sound and motion land together.
+If SFX are enabled, also pass `skills/presentation-video/assets/sfx/sfx-analysis.md` as selection guidance. Prefer low high-frequency-risk files for repeated or polished moments. SFX on sequential events should fire at the same timestamp as the visual — the sound and motion land together.
 
 ---
 
 ## Call Hyperframes
 
-After `brag-output/brag-plan.md`, `brag-output/composition-brief.md`, and selected audio assets exist:
+After `presentation-video-output/video-plan.md`, `presentation-video-output/composition-brief.md`, and selected audio assets exist:
 
-1. Use the `hyperframes` skill to create or update `brag-output/composition/`.
-2. Pass Hyperframes the composition brief, the brag plan, the Apple-inspired direction, and the source files it should reference.
+1. Use the `hyperframes` skill to create or update `presentation-video-output/composition/`.
+2. Pass Hyperframes the composition brief, the video plan, the Apple-inspired direction, and the source files it should reference.
 3. Let Hyperframes choose the implementation details.
 4. Run Hyperframes lint and validate.
-5. Follow the preview/render authorization in Step 4, render to `<output-dir>/brag.mp4`, then perform final-render QA.
+5. Follow the preview/render authorization in Step 4, render to `<output-dir>/presentation-video.mp4`, then perform final-render QA.
 
 Do not manually copy stale composition snippets from this skill into the output. The point of delegating is to benefit from the latest Hyperframes guidance.
 
@@ -199,7 +199,7 @@ Before moving to delivery, verify:
 
 - [ ] `<output-dir>/composition-brief.md` exists and carries forward the direction criteria and scene mappings.
 - [ ] The brief clearly identifies the exact product moments to show.
-- [ ] The composition uses the current Hyperframes workflow, not a hardcoded `/brag` template.
+- [ ] The composition uses the current Hyperframes workflow, not a hardcoded `/presentation-video` template.
 - [ ] Selected music is copied into `<output-dir>/composition/assets/music/`, or disabled/missing/intentional silence is recorded.
 - [ ] When music is present and reactive treatment is selected, at least one visual element subtly reacts to it, or extraction failure is documented. A planned `none` treatment remains valid.
 - [ ] At least 1 major tween is beat-locked to a strong cue (a `strongCue`, or the highest-`strength` beat from `hyperframes beats`) within ±0.15s, marked `// beat-locked` (or natural timing was chosen for readability).
