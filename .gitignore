@@ -1,0 +1,23 @@
+# Vídeos gerados e builds locais
+brag-output/
+brag-output-*/
+node_modules/
+dist/
+build/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Segredos e configurações locais
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+
+# Sistema operacional / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
